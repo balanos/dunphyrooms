@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>DunphyRooms Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#EDF1F6;
+  --ink:#14213D; --ink-2:#4A5672; --line:#D6DDE7;
+  --trust:#0E7C66; --trust-soft:#DDF1EB;
+  --flag:#B8341F; --flag-soft:#F8E1DC;
+  --boost:#E0A21B; --boost-soft:#FBF0D4;
+  --brand:#1F4FD1; --on-brand:#FFFFFF;
+  --radius-lg:14px; --radius-sm:8px;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1626; --surface:#18223A; --surface-2:#1F2B46;
+    --ink:#E9EEF7; --ink-2:#A6B1C7; --line:#2E3B59;
+    --trust:#3CC39F; --trust-soft:#143A33;
+    --flag:#F07A62; --flag-soft:#3E2020;
+    --boost:#F2C14E; --boost-soft:#3A3016;
+    --brand:#7FA2FF; --on-brand:#0F1626;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1626; --surface:#18223A; --surface-2:#1F2B46;
+  --ink:#E9EEF7; --ink-2:#A6B1C7; --line:#2E3B59;
+  --trust:#3CC39F; --trust-soft:#143A33;
+  --flag:#F07A62; --flag-soft:#3E2020;
+  --boost:#F2C14E; --boost-soft:#3A3016;
+  --brand:#7FA2FF; --on-brand:#0F1626;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0 0 .4em}
+h1{font-size:1.35rem;font-weight:800}
+h2{font-size:1.6rem}
+h3{font-size:1.15rem}
+p{margin:0 0 .8em;max-width:70ch}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;align-items:center;gap:14px;min-height:60px;flex-wrap:wrap;padding:8px 0}
+.bar .who{margin-left:auto;font-size:.9rem;color:var(--ink-2);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag-admin{background:var(--ink);color:var(--bg);font-size:.75rem;font-weight:700;border-radius:99px;padding:2px 10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:var(--radius-sm);padding:10px 16px;font-weight:700;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:var(--brand);color:var(--on-brand)}
+.btn-approve{background:var(--trust);color:#fff}
+.btn-remove{background:transparent;border:1.5px solid var(--flag);color:var(--flag)}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn-sm{padding:7px 12px;font-size:.9rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-weight:600}
+input[type=email],input[type=password],input[type=search],textarea{border:1px solid var(--line);background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;width:100%}
+textarea{min-height:90px;resize:vertical}
+.msg{font-weight:600;margin:10px 0 0}
+.msg.bad{color:var(--flag)} .msg.ok{color:var(--trust)}
+main{padding:28px 0 60px}
+.narrow{max-width:440px;margin:40px auto}
+.demo-note{background:var(--boost-soft);border:1px solid var(--boost);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:18px;font-size:.92rem}
+
+/* Queue controls */
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:6px 0 18px}
+.tabs{display:flex;background:var(--surface-2);border-radius:var(--radius-sm);padding:4px;gap:2px;flex-wrap:wrap}
+.tabs button{border:0;background:none;padding:8px 12px;border-radius:6px;font-weight:700;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tabs .count{display:inline-block;min-width:1.6em;margin-left:4px;font-size:.8rem;background:var(--line);border-radius:99px;padding:0 6px}
+.tabs button[data-tab="pending"] .count.has{background:var(--boost);color:#1b1400}
+.controls input[type=search]{max-width:280px;flex:1;min-width:180px}
+
+/* Listing review card */
+.list{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:var(--radius-lg);padding:18px 20px}
+.card.pending{border-left-color:var(--boost)}
+.card.live{border-left-color:var(--trust)}
+.card.removed{border-left-color:var(--flag);opacity:.9}
+.card-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.card h3{margin:0 0 2px}
+.sub{color:var(--ink-2);font-size:.92rem;margin:0}
+.price{font-family:var(--display);font-weight:800;font-size:1.3rem;white-space:nowrap}
+.status{display:inline-block;font-size:.8rem;font-weight:700;border-radius:99px;padding:2px 10px;margin-right:6px}
+.st-pending{background:var(--boost-soft);color:var(--ink)}
+.st-live{background:var(--trust-soft);color:var(--trust)}
+.st-removed{background:var(--flag-soft);color:var(--flag)}
+.st-paused{background:var(--surface-2);color:var(--ink-2)}
+.facts{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-2);margin:10px 0}
+.facts b{color:var(--ink);font-weight:600}
+.desc{background:var(--surface-2);border-radius:var(--radius-sm);padding:10px 12px;font-size:.95rem;margin:8px 0;white-space:pre-wrap;max-width:none}
+.host{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;font-size:.92rem;margin:8px 0}
+.ok{color:var(--trust);font-weight:700}
+.warn{color:var(--flag);font-weight:700}
+.flag-box{background:var(--flag-soft);color:var(--ink);border-radius:var(--radius-sm);padding:8px 12px;font-size:.9rem;margin:8px 0}
+.note{border-left:3px solid var(--flag);padding:4px 10px;font-size:.9rem;margin:8px 0;color:var(--ink-2)}
+.docs{margin-top:10px}
+.docs-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.doc{display:flex;flex-direction:column;gap:4px;width:150px;font-size:.8rem;color:var(--ink-2);text-decoration:none;word-break:break-all}
+.doc .thumb{width:150px;height:110px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);object-fit:cover;display:grid;place-items:center;font-weight:700;color:var(--ink-2)}
+.doc .kind{font-weight:700;color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.empty{text-align:center;padding:40px 20px;color:var(--ink-2)}
+
+dialog{border:0;border-radius:var(--radius-lg);padding:0;width:calc(100% - 32px);max-width:520px;background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(10,16,30,.6)}
+.dlg{padding:22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.chips button{border:1.5px solid var(--line);background:none;border-radius:99px;padding:5px 12px;font-size:.88rem;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:var(--radius-sm);font-weight:600;max-width:90vw;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <h1 style="margin:0">DunphyRooms <span class="tag-admin">Admin</span></h1>
+    <div class="who" id="who"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="demo-note" id="demoNote" hidden>
+    <strong>Demo mode.</strong> These listings are examples and nothing is saved. Fill in the BACKEND SETTINGS at the top of admin.html's script to review real listings.
+  </div>
+
+  <!-- Log in -->
+  <section id="loginView" hidden>
+    <div class="panel narrow">
+      <h2>Admin log in</h2>
+      <p>Use the same email and password as your DunphyRooms account. Only accounts on the admin list can review listings.</p>
+      <form id="loginForm">
+        <div class="field"><label for="email">Email</label><input type="email" id="email" required autocomplete="email"></div>
+        <div class="field"><label for="password">Password</label><input type="password" id="password" required autocomplete="current-password"></div>
+        <button class="btn btn-primary" type="submit" style="width:100%">Log in</button>
+        <p class="msg bad" id="loginMsg" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Logged in, but not an admin -->
+  <section id="notAdminView" hidden>
+    <div class="panel narrow">
+      <h2>This account isn't an admin</h2>
+      <p id="notAdminText"></p>
+      <p>To make it one, run the "Make yourself an admin" lines from <strong>admin.sql</strong> in the Supabase SQL Editor with this email, then refresh this page.</p>
+      <button class="btn btn-ghost" type="button" data-logout>Log out</button>
+    </div>
+  </section>
+
+  <!-- Review queue -->
+  <section id="queueView" hidden>
+    <h2>Listings</h2>
+    <div class="controls">
+      <div class="tabs" role="tablist" aria-label="Filter listings">
+        <button type="button" role="tab" data-tab="pending" aria-selected="true">Waiting for review <span class="count" id="c-pending">0</span></button>
+        <button type="button" role="tab" data-tab="live" aria-selected="false">Live <span class="count" id="c-live">0</span></button>
+        <button type="button" role="tab" data-tab="removed" aria-selected="false">Removed <span class="count" id="c-removed">0</span></button>
+        <button type="button" role="tab" data-tab="all" aria-selected="false">All <span class="count" id="c-all">0</span></button>
+      </div>
+      <input type="search" id="search" placeholder="Search title, suburb or host email" aria-label="Search listings">
+      <button class="btn btn-ghost btn-sm" type="button" id="refreshBtn">Refresh</button>
+    </div>
+    <div class="list" id="list" aria-live="polite"></div>
+  </section>
+</main>
+
+<dialog id="removeDlg">
+  <form class="dlg" id="removeForm" method="dialog">
+    <h2 style="font-size:1.3rem">Remove this listing?</h2>
+    <p id="removeTitle" style="font-weight:600"></p>
+    <p style="font-size:.92rem;color:var(--ink-2)">It disappears from search straight away and the host can't put it back. If it's boosted, the Boost subscription is cancelled so the host isn't charged again. You can restore it later if needed.</p>
+    <div class="field">
+      <label for="reason">Reason (saved with the listing)</label>
+      <div class="chips" id="reasonChips">
+        <button type="button">Ownership documents don't match the host</button>
+        <button type="button">Photos are AI-generated or misleading</button>
+        <button type="button">Duplicate listing</button>
+        <button type="button">Suspected scam</button>
+        <button type="button">Reported by renters</button>
+      </div>
+      <textarea id="reason" required maxlength="500" placeholder="Pick a reason above or write your own"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-remove" type="submit" value="confirm" id="confirmRemove" style="background:var(--flag);color:#fff;border-color:var(--flag)">Remove listing</button>
+      <button class="btn btn-ghost" type="submit" value="cancel" formnovalidate>Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ============================================================
+   BACKEND SETTINGS
+   Paste the SAME two values you put in index.html.
+   Both are safe to publish. NEVER paste the service_role key
+   or a Stripe secret key here.
+   ============================================================ */
+const CONFIG={
+  SUPABASE_URL:"",        // e.g. "https://abcdefgh.supabase.co"
+  SUPABASE_ANON_KEY:""    // the "anon" / "publishable" key
+};
+
+(function(){
+const LIVE=!!(CONFIG.SUPABASE_URL&&CONFIG.SUPABASE_ANON_KEY);
+const sb=LIVE&&window.supabase?window.supabase.createClient(CONFIG.SUPABASE_URL,CONFIG.SUPABASE_ANON_KEY):null;
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDate=d=>d?new Date(d).toLocaleString("en-AU",{day:"numeric",month:"short",year:"numeric",hour:"numeric",minute:"2-digit"}):"—";
+let user=null,listings=[],tab="pending",removing=null;
+
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),4000)}
+function show(view){["loginView","notAdminView","queueView"].forEach(v=>$(v).hidden=v!==view)}
+function renderWho(){
+  $("who").innerHTML=user?`<span>${esc(user.email)}</span><button class="btn btn-ghost btn-sm" type="button" data-logout>Log out</button>`:"";
+}
+
+// ---------- Demo data (only used when BACKEND SETTINGS are blank) ----------
+const now=Date.now(),hrs=h=>new Date(now-h*36e5).toISOString();
+const DEMO=[
+  {id:"d1",title:"Sunny room near Melbourne Uni",suburb:"Carlton",uni:"University of Melbourne (Parkville)",price:310,room_type:"Private room",furnished:true,bills:true,pets:false,housemates:2,description:"Top-floor room in a terrace with two postgrad students. Tram at the door.",status:"active",own_verified:false,photos_verified:false,boost_until:null,review_note:null,created_at:hrs(3),host_id:"h1",profiles:{email:"linh.t@example.com",id_verified:true},_docs:[{name:"rates-notice.pdf"},{name:"room-1.jpg"},{name:"room-2.jpg"}]},
+  {id:"d2",title:"Cheap room CBD, pay deposit today!!",suburb:"Melbourne CBD",uni:"RMIT (City)",price:150,room_type:"Private room",furnished:true,bills:true,pets:false,housemates:1,description:"Luxury apartment. Owner overseas, send deposit by bank transfer to secure. No inspections.",status:"active",own_verified:false,photos_verified:false,boost_until:hrs(-100),stripe_subscription_id:"sub_demo",review_note:null,created_at:hrs(1),host_id:"h2",profiles:{email:"quickrooms@example.com",id_verified:false},_docs:[{name:"room.png"}]},
+  {id:"d3",title:"Budget room, Footscray",suburb:"Footscray",uni:"Victoria University (Footscray)",price:210,room_type:"Private room",furnished:false,bills:true,pets:true,housemates:4,description:"Relaxed house with a friendly old kelpie.",status:"active",own_verified:true,photos_verified:true,boost_until:null,review_note:null,created_at:hrs(80),host_id:"h3",profiles:{email:"sam.o@example.com",id_verified:false},_docs:[]},
+  {id:"d4",title:"Same room, second listing",suburb:"Melbourne CBD",uni:"RMIT (City)",price:160,room_type:"Private room",furnished:true,bills:true,pets:false,housemates:1,description:"Contact me on WhatsApp only.",status:"removed",own_verified:false,photos_verified:false,boost_until:null,review_note:"Duplicate listing",reviewed_at:hrs(20),created_at:hrs(30),host_id:"h2",profiles:{email:"quickrooms@example.com",id_verified:false},_docs:[]}
+];
+
+// ---------- Loading ----------
+async function load(){
+  $("list").innerHTML=`<div class="empty">Loading listings…</div>`;
+  if(!LIVE){listings=DEMO;render();return}
+  const {data,error}=await sb.from("listings")
+    .select("*, profiles(email, id_verified)")
+    .order("created_at",{ascending:false}).limit(500);
+  if(error){$("list").innerHTML=`<div class="empty">Couldn't load listings: ${esc(error.message)}</div>`;return}
+  listings=data;render();
+}
+
+function stateOf(l){
+  if(l.status==="removed")return "removed";
+  if(l.own_verified&&l.photos_verified)return l.status==="paused"?"paused":"live";
+  return "pending";
+}
+const LABEL={pending:"Waiting for review",live:"Live",removed:"Removed",paused:"Paused by host"};
+
+function render(){
+  const perHost={};listings.forEach(l=>{if(l.status!=="removed")perHost[l.host_id]=(perHost[l.host_id]||0)+1});
+  const counts={pending:0,live:0,removed:0,all:listings.length};
+  listings.forEach(l=>{const s=stateOf(l);if(s==="paused")counts.live++;else counts[s]++});
+  Object.keys(counts).forEach(k=>{$("c-"+k).textContent=counts[k]});
+  $("c-pending").classList.toggle("has",counts.pending>0);
+
+  const q=$("search").value.trim().toLowerCase();
+  const rows=listings.filter(l=>{
+    const s=stateOf(l);
+    const inTab=tab==="all"||s===tab||(tab==="live"&&s==="paused");
+    const hay=(l.title+" "+l.suburb+" "+(l.profiles?.email||"")).toLowerCase();
+    return inTab&&(!q||hay.includes(q));
+  });
+  // Oldest first in the review queue, so nothing waits too long
+  if(tab==="pending")rows.sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+
+  if(!rows.length){
+    $("list").innerHTML=`<div class="empty panel">${tab==="pending"&&!q?"Nothing waiting for review. New listings will appear here.":"No listings match."}</div>`;
+    return;
+  }
+  $("list").innerHTML=rows.map(l=>{
+    const s=stateOf(l),p=l.profiles||{},n=perHost[l.host_id]||0;
+    const boosted=l.boost_until&&new Date(l.boost_until)>new Date();
+    const waitH=Math.round((Date.now()-new Date(l.created_at))/36e5);
+    return `<article class="card ${s==="paused"?"live":s}" data-id="${esc(l.id)}">
+      <div class="card-top">
+        <div>
+          <p style="margin:0 0 6px"><span class="status st-${s}">${LABEL[s]}</span>${boosted?'<span class="status" style="background:var(--boost);color:#1b1400">Boosted</span>':""}</p>
+          <h3>${esc(l.title)}</h3>
+          <p class="sub">${esc(l.suburb)}${l.uni?" · near "+esc(l.uni):""} · submitted ${fmtDate(l.created_at)}${s==="pending"?` <strong>(${waitH<1?"under an hour":waitH+" hour"+(waitH===1?"":"s")} ago)</strong>`:""}</p>
+        </div>
+        <div class="price">$${esc(l.price)}<span style="font-size:.85rem;font-weight:500;font-family:var(--body);color:var(--ink-2)"> /week</span></div>
+      </div>
+      <div class="facts"><span><b>${esc(l.room_type)}</b></span><span>${esc(l.housemates)} housemate${l.housemates===1?"":"s"}</span><span>Furnished: <b>${l.furnished?"Yes":"No"}</b></span><span>Bills incl.: <b>${l.bills?"Yes":"No"}</b></span><span>Pets: <b>${l.pets?"Yes":"No"}</b></span></div>
+      ${l.description?`<p class="desc">${esc(l.description)}</p>`:""}
+      <div class="host"><span>Host: <b>${esc(p.email||"unknown")}</b></span>${p.id_verified?'<span class="ok">✓ ID verified by Stripe</span>':'<span class="warn">ID not verified</span>'}</div>
+      ${n>1?`<div class="flag-box"><strong>This host has ${n} active listings.</strong> Check they aren't duplicates of the same room.</div>`:""}
+      ${l.review_note?`<p class="note">Removed ${l.reviewed_at?fmtDate(l.reviewed_at):""}: ${esc(l.review_note)}</p>`:""}
+      <div class="docs">
+        <button class="btn btn-ghost btn-sm" type="button" data-docs="${esc(l.id)}">Show ownership documents and photos</button>
+        <div class="docs-grid" id="docs-${esc(l.id)}"></div>
+      </div>
+      <div class="actions">
+        ${s==="pending"?`<button class="btn btn-approve" type="button" data-act="approve" data-id="${esc(l.id)}">Approve and make live</button>`:""}
+        ${s!=="removed"?`<button class="btn btn-remove" type="button" data-act="remove" data-id="${esc(l.id)}">Remove listing</button>`:""}
+        ${s==="removed"?`<button class="btn btn-ghost" type="button" data-act="restore" data-id="${esc(l.id)}">Restore listing</button>`:""}
+      </div>
+    </article>`;
+  }).join("");
+}
+
+// ---------- Documents ----------
+async function showDocs(id,btn){
+  const l=listings.find(x=>String(x.id)===String(id));const box=$("docs-"+id);
+  btn.disabled=true;btn.textContent="Loading…";
+  let files=[];
+  try{
+    if(!LIVE){files=(l._docs||[]).map(f=>({path:f.name,name:f.name,url:null}))}
+    else{
+      // New uploads: host-id/listing-id/…   Older uploads: host-id/…
+      const folders=[`${l.host_id}/${l.id}`,`${l.host_id}`];
+      for(const folder of folders){
+        const {data,error}=await sb.storage.from("host-docs").list(folder,{limit:100,sortBy:{column:"created_at",order:"asc"}});
+        if(error)throw error;
+        (data||[]).filter(f=>f.id).forEach(f=>files.push({path:folder+"/"+f.name,name:f.name}));
+      }
+      if(files.length){
+        const {data,error}=await sb.storage.from("host-docs").createSignedUrls(files.map(f=>f.path),3600);
+        if(error)throw error;
+        data.forEach((d,i)=>files[i].url=d.signedUrl);
+      }
+    }
+  }catch(err){box.innerHTML=`<p class="warn">Couldn't load files: ${esc(err.message)}</p>`;btn.disabled=false;btn.textContent="Try again";return}
+  btn.remove();
+  if(!files.length){box.innerHTML=`<p class="warn" style="margin:0">No files uploaded for this listing.</p>`;return}
+  const isImg=n=>/\.(jpe?g|png|gif|webp|heic|avif)$/i.test(n);
+  const kind=n=>/-own-/.test(n)||/\.pdf$/i.test(n)?"Ownership proof":/-photos-/.test(n)||isImg(n)?"Room photo":"File";
+  box.innerHTML=files.map(f=>{
+    const nice=f.name.replace(/^\d+-(own|photos)-/,"");
+    const thumb=f.url&&isImg(f.name)?`<img class="thumb" src="${esc(f.url)}" alt="${esc(nice)}" loading="lazy">`:`<span class="thumb">${isImg(f.name)?"IMG":"PDF"}</span>`;
+    const inner=`${thumb}<span class="kind">${kind(f.name)}</span><span>${esc(nice)}</span>`;
+    return f.url?`<a class="doc" href="${esc(f.url)}" target="_blank" rel="noopener">${inner}</a>`:`<span class="doc">${inner}</span>`;
+  }).join("");
+}
+
+// ---------- Actions ----------
+async function act(id,action,reason){
+  const l=listings.find(x=>String(x.id)===String(id));
+  document.querySelectorAll(`[data-id="${CSS.escape(id)}"] button, button[data-id="${CSS.escape(id)}"]`).forEach(b=>b.disabled=true);
+  try{
+    let res;
+    if(!LIVE){
+      res={ok:true,boostCancelled:!!l.stripe_subscription_id&&action==="remove"};
+      if(action==="approve")Object.assign(l,{own_verified:true,photos_verified:true,status:"active",review_note:null});
+      if(action==="remove")Object.assign(l,{status:"removed",review_note:reason,boost_until:null,reviewed_at:new Date().toISOString()});
+      if(action==="restore")Object.assign(l,{status:"active",review_note:null});
+    }else{
+      const {data,error}=await sb.functions.invoke("admin-review",{body:{listing_id:id,action,reason}});
+      if(error){let m=error.message;try{m=(await error.context.json()).error||m}catch(_){}throw new Error(m)}
+      res=data;
+    }
+    const msg={approve:"Approved. The listing is now live in search.",remove:"Listing removed."+(res.boostCancelled?" Its Boost subscription was cancelled.":""),restore:"Listing restored and live again."}[action];
+    toast(res.warning||msg);
+    if(LIVE)await load();else render();
+  }catch(err){toast("Couldn't do that: "+err.message);render()}
+}
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;
+  if(t.hasAttribute("data-logout")){logout();return}
+  if(t.dataset.tab){tab=t.dataset.tab;document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",String(b===t)));render();return}
+  if(t.dataset.docs){showDocs(t.dataset.docs,t);return}
+  if(t.dataset.act==="approve"){act(t.dataset.id,"approve");return}
+  if(t.dataset.act==="restore"){act(t.dataset.id,"restore");return}
+  if(t.dataset.act==="remove"){
+    removing=t.dataset.id;const l=listings.find(x=>String(x.id)===String(removing));
+    $("removeTitle").textContent=`${l.title} (${l.profiles?.email||"unknown host"})`;
+    $("reason").value="";$("removeDlg").showModal();$("reason").focus();return;
+  }
+  if(t.closest("#reasonChips")){$("reason").value=t.textContent;return}
+});
+$("removeDlg").addEventListener("close",()=>{
+  if($("removeDlg").returnValue==="confirm"&&removing&&$("reason").value.trim())act(removing,"remove",$("reason").value.trim());
+  removing=null;
+});
+$("search").addEventListener("input",render);
+$("refreshBtn").onclick=load;
+
+// ---------- Log in / out ----------
+async function checkAdmin(){
+  if(!LIVE)return true;
+  const {data,error}=await sb.rpc("is_admin");
+  if(error){console.warn(error);return false}
+  return data===true;
+}
+async function enter(){
+  renderWho();
+  if(!user){show("loginView");return}
+  if(!(await checkAdmin())){$("notAdminText").textContent=`You're logged in as ${user.email}, which isn't on the admin list.`;show("notAdminView");return}
+  show("queueView");load();
+}
+async function logout(){if(sb)await sb.auth.signOut();user=null;enter()}
+
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();$("loginMsg").textContent="";
+  const email=$("email").value.trim(),password=$("password").value;
+  if(!LIVE){user={email};enter();return}
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  if(error){$("loginMsg").textContent=/invalid login/i.test(error.message)?"That email and password don't match.":error.message;return}
+  user=data.user;$("password").value="";enter();
+});
+
+(async function init(){
+  $("demoNote").hidden=LIVE;
+  if(LIVE&&!sb){show("loginView");$("loginMsg").textContent="Couldn't load the sign-in service. Check your connection and refresh.";return}
+  if(LIVE){const {data:{session}}=await sb.auth.getSession();user=session?.user||null}
+  else user={email:"demo-admin@dunphyrooms.com"};
+  enter();
+})();
+})();
+</script>
+</body>
+</html>

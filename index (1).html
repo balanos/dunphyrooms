@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DunphyRooms.com — Verified rooms for international students in Melbourne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#EDF1F6;
+  --ink:#14213D; --ink-2:#4A5672; --line:#D6DDE7;
+  --trust:#0E7C66; --trust-soft:#DDF1EB;
+  --flag:#B8341F; --flag-soft:#F8E1DC;
+  --boost:#E0A21B; --boost-soft:#FBF0D4;
+  --brand:#1F4FD1;
+  --radius-lg:14px; --radius-sm:8px;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1626; --surface:#18223A; --surface-2:#1F2B46;
+    --ink:#E9EEF7; --ink-2:#A6B1C7; --line:#2E3B59;
+    --trust:#3CC39F; --trust-soft:#143A33;
+    --flag:#F07A62; --flag-soft:#3E2020;
+    --boost:#F2C14E; --boost-soft:#3A3016;
+    --brand:#7FA2FF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1626; --surface:#18223A; --surface-2:#1F2B46;
+  --ink:#E9EEF7; --ink-2:#A6B1C7; --line:#2E3B59;
+  --trust:#3CC39F; --trust-soft:#143A33;
+  --flag:#F07A62; --flag-soft:#3E2020;
+  --boost:#F2C14E; --boost-soft:#3A3016;
+  --brand:#7FA2FF;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 1em;max-width:68ch}
+a{color:var(--brand)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* Header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo svg{width:28px;height:28px}
+.nav nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav nav button{background:none;border:0;padding:8px 12px;border-radius:var(--radius-sm);cursor:pointer;font-weight:600;color:var(--ink-2)}
+.nav nav button[aria-current="page"]{color:var(--ink);background:var(--surface-2)}
+.apps-left{font-size:.85rem;color:var(--ink-2);white-space:nowrap}
+@media (max-width:760px){.nav{height:auto;flex-wrap:wrap;padding:10px 0}.nav nav{margin-left:0;width:100%}.apps-left{display:none}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--radius-sm);padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:var(--brand);color:#fff}
+:root[data-theme="dark"] .btn-primary{color:#0F1626}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-primary{color:#0F1626}}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn-trust{background:var(--trust);color:#fff}
+.btn-boost{background:var(--boost);color:#1b1400}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* Hero / search */
+.hero{padding:48px 0 32px}
+.hero p.lede{font-size:1.15rem;color:var(--ink-2)}
+.search{display:grid;grid-template-columns:2fr 1.2fr 1fr auto;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px;margin-top:24px}
+.search label{display:flex;flex-direction:column;font-size:.8rem;font-weight:600;color:var(--ink-2);gap:4px}
+.search input,.search select{border:1px solid var(--line);background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;font-size:1rem}
+.search .btn{align-self:end;height:46px}
+.filters{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:.95rem}
+.filters label{display:flex;align-items:center;gap:6px;cursor:pointer}
+@media (max-width:760px){.search{grid-template-columns:1fr 1fr}.search label:first-child{grid-column:1/-1}.search .btn{grid-column:1/-1}}
+
+/* Results */
+.results-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin:8px 0 16px}
+.results-head select{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-sm);padding:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;padding-bottom:48px}
+.listing{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
+.listing.boosted{border:2px solid var(--boost)}
+.photo{position:relative;aspect-ratio:16/10;background:var(--surface-2)}
+.photo svg{width:100%;height:100%;display:block}
+.boost-tag{position:absolute;top:10px;left:10px;background:var(--boost);color:#1b1400;font-size:.78rem;font-weight:700;padding:3px 9px;border-radius:99px}
+.listing-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.price{font-family:var(--display);font-size:1.5rem;font-weight:800}
+.price small{font-family:var(--body);font-size:.9rem;font-weight:500;color:var(--ink-2)}
+.addr{color:var(--ink-2);margin:0}
+.meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-2)}
+
+/* Verification stamp - the signature element */
+.stamp{border:2px dashed var(--trust);border-radius:var(--radius-sm);padding:10px 12px;background:var(--trust-soft);font-size:.88rem}
+.stamp-title{font-family:var(--display);font-weight:700;color:var(--trust);display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.stamp ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3px 10px}
+.stamp li{display:flex;align-items:center;gap:6px}
+.stamp li.no{color:var(--flag)}
+.stamp.partial{border-color:var(--flag);background:var(--flag-soft)}
+.stamp.partial .stamp-title{color:var(--flag)}
+.stamp.basic{border-color:var(--ink-2);background:var(--surface-2)}
+.stamp.basic .stamp-title{color:var(--ink)}
+.stamp li.muted{color:var(--ink-2)}
+.account{margin-top:20px}
+.auth-slot{display:flex;align-items:center;gap:10px;margin-left:8px}
+.auth-slot .who{font-size:.85rem;color:var(--ink-2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-sm{padding:8px 14px;font-size:.92rem}
+.login-card{max-width:460px;margin:0 auto}
+.login-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border-radius:var(--radius-sm);padding:4px;margin:4px 0 20px}
+.login-tabs button{border:0;background:none;padding:9px;border-radius:6px;font-weight:700;cursor:pointer;color:var(--ink-2)}
+.login-tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.auth-msg{margin:12px 0 0;font-size:.92rem;font-weight:600}
+.auth-msg.ok{color:var(--trust)}.auth-msg.bad{color:var(--flag)}
+.linklike{background:none;border:0;padding:0;margin-top:14px;color:var(--brand);text-decoration:underline;cursor:pointer;font-size:.92rem}
+@media (max-width:760px){.auth-slot{margin-left:auto}}
+.account .field{margin:0}
+.opt-badge{display:inline-block;font-size:.75rem;font-weight:700;background:var(--boost-soft);color:var(--ink);border-radius:99px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+.recommend{background:var(--trust-soft);border-left:4px solid var(--trust);padding:8px 10px;border-radius:6px;font-size:.88rem;margin-top:8px;color:var(--ink)}
+.countdown{font-size:.85rem;color:var(--ink-2)}
+.countdown strong{color:var(--ink)}
+.listing-actions{display:flex;gap:8px;margin-top:auto}
+.listing-actions .btn{flex:1}
+.empty{grid-column:1/-1;background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius-lg);padding:32px;text-align:center}
+
+/* Sections */
+.view{display:none}
+.view.active{display:block}
+.section{padding:40px 0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px}
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+@media (max-width:860px){.two-col{grid-template-columns:1fr}}
+form .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+form .field label,form .field legend{font-weight:600}
+form .hint{font-size:.85rem;color:var(--ink-2)}
+form input[type=text],form input[type=number],form input[type=email],form input[type=password],form select,form textarea{border:1px solid var(--line);background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;width:100%}
+form textarea{min-height:90px;resize:vertical}
+fieldset{border:0;padding:0;margin:0 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{border:1.5px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;font-weight:500;font-size:.92rem}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label:has(input:checked){background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips label:has(input:focus-visible){outline:3px solid var(--brand);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--brand)}
+
+/* Resume preview */
+.resume{border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden;position:sticky;top:84px}
+.resume-top{background:var(--ink);color:var(--bg);padding:20px 22px}
+.resume-top h3{margin:0;font-size:1.5rem}
+.resume-top p{margin:4px 0 0;opacity:.8}
+.resume-body{padding:18px 22px}
+.resume-body dt{font-size:.82rem;font-weight:700;color:var(--ink-2);margin-top:12px}
+.resume-body dd{margin:2px 0 0}
+.meter{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:4px}
+.meter span{display:block;height:100%;background:var(--brand)}
+.concern{display:inline-block;background:var(--flag-soft);color:var(--flag);border-radius:6px;padding:1px 8px;margin:2px 4px 2px 0;font-size:.88rem;font-weight:600}
+.privacy{font-size:.82rem;color:var(--ink-2);border-top:1px solid var(--line);padding:12px 22px;margin:0;max-width:none}
+
+/* Host steps (a true sequence) */
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--surface-2)}
+.steps li.done::before{content:"✓";background:var(--trust);color:#fff}
+.steps li.fail::before{content:"!";background:var(--flag);color:#fff}
+.steps p{margin:0;font-size:.9rem;color:var(--ink-2)}
+.status{font-size:.85rem;font-weight:700}
+.status.ok{color:var(--trust)}.status.bad{color:var(--flag)}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:760px){.pricing{grid-template-columns:1fr}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px}
+.plan .amount{font-family:var(--display);font-size:2.4rem;font-weight:800}
+.plan ul{padding-left:20px}
+
+/* Comparison table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:.95rem}
+thead th{font-family:var(--display);background:var(--surface-2)}
+td.yes{color:var(--trust);font-weight:700}
+td.no{color:var(--flag)}
+tbody tr:last-child td{border-bottom:0}
+th.us,td.us{background:var(--trust-soft)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px}
+.stat b{font-family:var(--display);font-size:2rem;display:block}
+.stat span{color:var(--ink-2);font-size:.92rem}
+.src{font-size:.8rem;color:var(--ink-2)}
+
+/* Modal */
+dialog{border:0;border-radius:var(--radius-lg);padding:0;max-width:640px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);max-height:calc(100% - 40px)}
+dialog::backdrop{background:rgba(10,16,30,.6)}
+.modal-inner{padding:24px}
+.modal-close{float:right;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink-2);line-height:1}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:var(--radius-sm);opacity:0;transition:.25s;z-index:50;font-weight:600;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-2);font-size:.9rem;background:var(--surface)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" data-go="search" aria-label="DunphyRooms home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15 16 5l12 10v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" fill="var(--brand)"/><path d="m11 18 4 4 7-8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      DunphyRooms
+    </a>
+    <span class="apps-left" id="appsLeftTop"></span>
+    <nav aria-label="Main">
+      <button data-go="search" aria-current="page">Find a room</button>
+      <button data-go="resume">My RenterResume</button>
+      <button data-go="host">List a room</button>
+      <button data-go="why">Why we're different</button>
+    </nav>
+    <div class="auth-slot" id="authSlot"></div>
+  </div>
+</header>
+
+<main>
+<!-- SEARCH VIEW -->
+<section class="view active" id="view-search">
+  <div class="wrap hero">
+    <h1>Find a verified room in Melbourne before you land.</h1>
+    <p class="lede">Every listing is checked before it goes live: the host's right to rent the room is confirmed and photos are screened for AI edits. Hosts who verify their ID get a badge, and listings disappear when hosts stop replying.</p>
+    <form class="search" id="searchForm" role="search">
+      <label>Suburb or university
+        <input type="text" id="q" placeholder="e.g. Carlton, Monash Clayton, RMIT" list="places">
+        <datalist id="places"></datalist>
+      </label>
+      <label>Max rent per week
+        <select id="maxPrice">
+          <option value="9999">Any price</option>
+          <option value="250">$250</option>
+          <option value="300">$300</option>
+          <option value="350">$350</option>
+          <option value="400">$400</option>
+        </select>
+      </label>
+      <label>Room type
+        <select id="roomType">
+          <option value="">Any</option>
+          <option>Private room</option>
+          <option>Private room + ensuite</option>
+          <option>Shared room</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Search rooms</button>
+    </form>
+    <div class="filters">
+      <label><input type="checkbox" id="idVerified"> ID-verified hosts only</label>
+      <label><input type="checkbox" id="furnished"> Furnished</label>
+      <label><input type="checkbox" id="billsIncl"> Bills included</label>
+      <label><input type="checkbox" id="noPets"> No pets in the house</label>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="results-head">
+      <h2 id="resultCount" style="margin:0">Rooms</h2>
+      <label>Sort by
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="priceAsc">Price, low to high</option>
+          <option value="priceDesc">Price, high to low</option>
+          <option value="response">Fastest host reply</option>
+        </select>
+      </label>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- LOGIN VIEW -->
+<section class="view" id="view-login">
+  <div class="wrap section">
+    <div class="panel login-card">
+      <h2 id="loginTitle">Log in</h2>
+      <p id="loginReason">Log in or create a free account. It's the same account for renting and hosting.</p>
+      <div class="login-tabs" role="tablist" aria-label="Log in or create an account">
+        <button type="button" role="tab" id="tabLogin" aria-selected="true">Log in</button>
+        <button type="button" role="tab" id="tabSignup" aria-selected="false">Create account</button>
+      </div>
+      <form id="authForm" novalidate>
+        <div class="field"><label for="authEmail">Email</label><input type="email" id="authEmail" required autocomplete="email" placeholder="you@example.com"></div>
+        <div class="field"><label for="authPassword">Password</label><input type="password" id="authPassword" required autocomplete="current-password"><span class="hint" id="pwHint" hidden>At least 8 characters.</span></div>
+        <div class="field" id="confirmField" hidden><label for="authConfirm">Confirm password</label><input type="password" id="authConfirm" autocomplete="new-password"></div>
+        <button class="btn btn-primary" type="submit" id="authSubmit" style="width:100%">Log in</button>
+        <p class="auth-msg" id="authMsg" role="alert"></p>
+        <button type="button" class="linklike" id="forgotBtn">Forgot your password?</button>
+      </form>
+      <form id="resetForm" hidden>
+        <div class="field"><label for="newPassword">New password</label><input type="password" id="newPassword" required minlength="8" autocomplete="new-password"><span class="hint">At least 8 characters.</span></div>
+        <div class="field"><label for="newPassword2">Confirm new password</label><input type="password" id="newPassword2" required minlength="8" autocomplete="new-password"></div>
+        <button class="btn btn-primary" type="submit" style="width:100%">Save new password</button>
+        <p class="auth-msg bad" id="resetMsg" role="alert"></p>
+      </form>
+      <p class="hint" id="demoNote" style="margin:18px 0 0;font-size:.85rem;color:var(--ink-2)">Demo mode: accounts are saved in this browser only, any password works, and no emails are sent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME VIEW -->
+<section class="view" id="view-resume">
+  <div class="wrap section">
+    <h2>Your RenterResume</h2>
+    <p>Fill this in once. Every time you press Apply, hosts get this summary instead of a message you had to write from scratch. Only hosts you apply to can see it.</p>
+    <div class="two-col" style="margin-top:24px">
+      <form class="panel" id="resumeForm">
+        <div class="row2">
+          <div class="field"><label for="r-name">Full name</label><input type="text" id="r-name" required></div>
+          <div class="field"><label for="r-email">Email</label><input type="email" id="r-email" required></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="r-country">Home country</label><input type="text" id="r-country" placeholder="e.g. Vietnam"></div>
+          <div class="field"><label for="r-uni">University</label>
+            <select id="r-uni"><option value="">Choose…</option></select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="r-course">Course</label><input type="text" id="r-course" placeholder="e.g. Master of Engineering"></div>
+          <div class="field"><label for="r-move">Move-in date</label><input type="text" id="r-move" placeholder="e.g. 1 Feb 2027"></div>
+        </div>
+        <div class="field"><label for="r-langs">Languages you speak</label><input type="text" id="r-langs" placeholder="e.g. English, Mandarin"></div>
+        <fieldset>
+          <legend>Hobbies and interests</legend>
+          <div class="chips" id="hobbyChips"></div>
+        </fieldset>
+        <div class="field">
+          <label for="r-social">How social are you at home?</label>
+          <input type="range" id="r-social" min="1" max="5" value="3">
+          <span class="hint" id="socialLabel">Friendly but value quiet time</span>
+        </div>
+        <fieldset>
+          <legend>Your habits</legend>
+          <div class="chips" id="habitChips"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Things you'd find hard to live with</legend>
+          <p class="hint">Hosts see these so nobody is surprised after moving in.</p>
+          <div class="chips" id="concernChips"></div>
+        </fieldset>
+        <div class="field"><label for="r-about">A short note about you</label><textarea id="r-about" maxlength="400" placeholder="What would a housemate want to know?"></textarea><span class="hint"><span id="aboutCount">0</span>/400</span></div>
+        <div class="field">
+          <label><input type="checkbox" id="r-idcheck"> I agree to a student ID and passport check</label>
+          <span class="hint">Verified renters get a badge that hosts can see.</span>
+        </div>
+        <button class="btn btn-primary" type="submit">Save RenterResume</button>
+      </form>
+      <aside class="resume" aria-label="What hosts will see">
+        <div class="resume-top"><h3 id="pv-name">Your name</h3><p id="pv-sub">University · Course</p></div>
+        <dl class="resume-body" id="pv-body"></dl>
+        <p class="privacy">This is exactly what a host sees when you apply. Your email is only shared if the host accepts your application.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- HOST VIEW -->
+<section class="view" id="view-host">
+  <div class="wrap section">
+    <h2>List a room for free</h2>
+    <p>Listing is free. Before your room goes live, we confirm you own or manage it and check that the photos are real. Verifying your ID is optional, and we recommend it. We also ask that you reply to applicants within 72 hours.</p>
+    <div class="panel account" id="accountPanel" hidden></div>
+    <div class="two-col" style="margin-top:24px">
+      <form class="panel" id="hostForm">
+        <div class="field"><label for="h-title">Listing title</label><input type="text" id="h-title" required placeholder="e.g. Sunny room near Melbourne Uni"></div>
+        <div class="row2">
+          <div class="field"><label for="h-suburb">Suburb</label><input type="text" id="h-suburb" required></div>
+          <div class="field"><label for="h-price">Rent per week ($)</label><input type="number" id="h-price" required min="50" max="2000"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="h-type">Room type</label>
+            <select id="h-type"><option>Private room</option><option>Private room + ensuite</option><option>Shared room</option></select></div>
+          <div class="field"><label for="h-uni">Nearest university</label><select id="h-uni"></select></div>
+        </div>
+        <div class="field"><label for="h-desc">Description</label><textarea id="h-desc" placeholder="Describe the room, the house and who lives there."></textarea></div>
+        <fieldset>
+          <legend>Includes</legend>
+          <div class="chips">
+            <label><input type="checkbox" id="h-furn"> Furnished</label>
+            <label><input type="checkbox" id="h-bills"> Bills included</label>
+            <label><input type="checkbox" id="h-pets"> Pets in the house</label>
+          </div>
+        </fieldset>
+
+        <h3 style="margin-top:8px">Verification</h3>
+        <ol class="steps" id="verifySteps">
+          <li data-step="own"><div><strong>Prove ownership or authority to rent</strong><p>We match your name to the land title. Renting out a room in a place you rent? Upload your landlord's written consent to sublet.</p></div><label class="btn btn-ghost">Upload<input type="file" hidden accept="image/*,.pdf"></label></li>
+          <li data-step="photos"><div><strong>Add photos of the room</strong><p>Each photo is checked for AI generation and heavy editing.</p></div><label class="btn btn-ghost">Add photos<input type="file" hidden accept="image/*" multiple></label></li>
+          <li data-step="id"><div><strong>Verify your ID</strong><span class="opt-badge" id="idBadge">Optional, $2.99</span><p>A one-off check of your driver's licence or passport.</p><div class="recommend"><strong>Recommended.</strong> ID-verified hosts rank higher in search and show up when renters filter for verified hosts, so you'll find a tenant faster.</div></div><div id="idAction"></div></li>
+        </ol>
+        <div class="field" style="margin-top:16px">
+          <label><input type="checkbox" id="h-reply" required> I'll reply to applicants within 72 hours, or my listing is paused automatically.</label>
+        </div>
+        <div class="field">
+          <label><input type="checkbox" id="h-boost"> Boost this listing for $11.99 a week, with free ID verification included</label>
+          <span class="hint">Boosted listings appear at the top of search results with a highlighted border. The $2.99 ID check is included at no extra cost.</span>
+        </div>
+        <p id="costSummary" style="font-weight:600;margin-bottom:10px"></p>
+        <button class="btn btn-primary" type="submit" id="publishBtn" disabled>Publish listing</button>
+        <p class="hint" id="publishHint" style="margin-top:8px">Complete the ownership and photo checks to publish.</p>
+      </form>
+      <aside class="panel">
+        <h3>What renters will see</h3>
+        <p>Your listing carries a stamp showing which checks you've passed. ID-verified listings rank above unverified ones, and renters can filter to show ID-verified hosts only.</p>
+        <div class="stamp" id="hostStampPreview"></div>
+        <h3 style="margin-top:24px">Applications, not inbox noise</h3>
+        <p>Renters apply with a RenterResume, so you see their university, habits, languages and deal-breakers at a glance. Accept or decline with one tap.</p>
+        <h3 style="margin-top:24px">One listing per room</h3>
+        <p>If the same person or property appears in several listings, we flag it for review before any of them go live.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VIEW -->
+<section class="view" id="view-why">
+  <div class="wrap section">
+    <h2>Built for students who can't inspect a room in person</h2>
+    <p>International students often have to commit to a room from overseas, in a second language, without seeing it. That's exactly where rental scams happen. DunphyRooms puts checking listings ahead of everything else.</p>
+
+    <div class="stats">
+      <div class="stat"><b>111,646</b><span>group households in Victoria at the 2021 Census</span><div class="src">ABS, 2024</div></div>
+      <div class="stat"><b>26.6%</b><span>of homes in Melbourne's north are group homes</span><div class="src">Buildstreet, 2021</div></div>
+      <div class="stat"><b>1.5 / 5</b><span>Trustpilot rating for Australia's largest flatshare site, from 5,000+ reviews</span><div class="src">Trustpilot, 2026</div></div>
+    </div>
+
+    <h3 style="margin-top:32px">How we compare</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th class="us">DunphyRooms</th><th>Flatmates.com</th><th>Realestate.com</th><th>FlatmateFinders</th></tr></thead>
+        <tbody>
+          <tr><td>Host identity verified</td><td class="yes us">Optional ($2.99), free with Boost</td><td class="no">Phone number only</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Proof of ownership or right to rent</td><td class="yes us">Yes</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>AI photo checks</td><td class="yes us">Yes</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Duplicate-listing detection</td><td class="yes us">Yes</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Inactive listings removed automatically</td><td class="yes us">After 72 hours of silence</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Apply without writing a message</td><td class="yes us">RenterResume</td><td class="no">Message required</td><td class="no">Enquiry form</td><td class="no">Short profile</td></tr>
+          <tr><td>Rooms only, not mixed with house sales</td><td class="yes us">Yes</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:40px">Pricing</h3>
+    <div class="pricing">
+      <div class="plan">
+        <h3>For renters</h3>
+        <div class="amount">Free</div>
+        <p>3 applications per day, full search, and your RenterResume.</p>
+        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+        <div class="amount">$5.99<small style="font-size:1rem;font-weight:500"> / week</small></div>
+        <ul><li>Unlimited applications</li><li>Cancel any time</li></ul>
+        <button class="btn btn-primary" data-open="paywall">Get unlimited applications</button>
+      </div>
+      <div class="plan">
+        <h3>For hosts</h3>
+        <div class="amount">Free</div>
+        <p>List a room and receive RenterResume applications. Ownership and photo checks are free.</p>
+        <p><strong>ID verification: $2.99 one-off.</strong> Optional but recommended, since ID-verified hosts rank higher and find tenants faster.</p>
+        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+        <div class="amount">$11.99<small style="font-size:1rem;font-weight:500"> / week</small></div>
+        <ul><li>Boosted placement at the top of search</li><li>Highlighted listing border</li><li>ID verification included free</li></ul>
+        <button class="btn btn-boost" data-go="host">List and boost a room</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="max-width:none"><strong>DunphyRooms.com</strong> · Verified room rentals for students in Melbourne. See something suspicious? Use "Report listing" on any room and our team reviews it within 24 hours.</p>
+    <p style="margin:0">This is an MVP prototype. Payments and verification checks are simulated.</p>
+  </div>
+</footer>
+
+<!-- Listing detail -->
+<dialog id="detail"><div class="modal-inner" id="detailInner"></div></dialog>
+
+<!-- Paywall -->
+<dialog id="paywall"><div class="modal-inner">
+  <button class="modal-close" aria-label="Close" data-close>×</button>
+  <h2>You've used today's 3 free applications</h2>
+  <p>Unlock unlimited applications for a week for $5.99, or come back tomorrow for 3 more free ones.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn btn-primary" id="buyUnlimited">Pay $5.99 for unlimited this week</button>
+    <button class="btn btn-ghost" data-close>Wait until tomorrow</button>
+  </div>
+</div></dialog>
+
+<!-- Need resume -->
+<dialog id="needResume"><div class="modal-inner">
+  <button class="modal-close" aria-label="Close" data-close>×</button>
+  <h2>Create your RenterResume first</h2>
+  <p>Hosts receive your RenterResume when you apply. It takes about three minutes and you only do it once.</p>
+  <button class="btn btn-primary" data-go="resume" data-close>Create RenterResume</button>
+</div></dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ============================================================
+   BACKEND SETTINGS
+   Leave these blank and the site runs in demo mode (simulated
+   payments and checks). Fill them in from Supabase > Project
+   Settings > API to switch on real sign-in, real listings and
+   automatic Stripe ID verification. Both values are safe to
+   publish: the database's security rules protect your data.
+   NEVER paste a Stripe secret key (sk_...) or the Supabase
+   service_role key here.
+   ============================================================ */
+const CONFIG={
+  SUPABASE_URL:"",        // e.g. "https://abcdefgh.supabase.co"
+  SUPABASE_ANON_KEY:"",   // the "anon" / "publishable" key
+  SHOW_DEMO_LISTINGS:true // set to false once you have real listings
+};
+(function(){
+const LIVE=!!(CONFIG.SUPABASE_URL&&CONFIG.SUPABASE_ANON_KEY);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const UNIS=["University of Melbourne (Parkville)","RMIT (City)","Monash (Clayton)","Monash (Caulfield)","Deakin (Burwood)","La Trobe (Bundoora)","Swinburne (Hawthorn)","Victoria University (Footscray)","ACU (Fitzroy)"];
+const HOBBIES=["Cooking","Gym","Gaming","Music","Reading","Hiking","Football","Photography","Art","Movies","Coffee"];
+const HABITS=["Early riser","Night owl","Non-smoker","Tidy","Vegetarian","Works part-time","Often has guests","Studies from home"];
+const CONCERNS=["Large dogs","Cats","Smoking indoors","Loud parties","Shared bathroom","Mixed-gender house"];
+const SOCIAL=["Very private","Mostly keeps to myself","Friendly but value quiet time","Enjoy hanging out at home","Love a lively house"];
+
+const today=new Date().toISOString().slice(0,10);
+const store={
+  get(k,d){try{const v=localStorage.getItem("dr_"+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("dr_"+k,JSON.stringify(v))}catch(e){}}
+};
+
+let listings=[
+ {id:1,title:"Bright room, 8 min walk to Melbourne Uni",suburb:"Carlton",uni:UNIS[0],price:320,type:"Private room",furnished:true,bills:true,pets:false,housemates:3,v:{id:true,own:true,photos:true},reply:4,boost:true,host:"Linh T.",daysSilent:0,desc:"Top-floor room in a quiet terrace with two postgrad students and a nurse. Desk, queen bed and wardrobe included. Tram 1 and 6 at the door.",hue:215},
+ {id:2,title:"Ensuite room near Monash Clayton",suburb:"Clayton",uni:UNIS[2],price:285,type:"Private room + ensuite",furnished:true,bills:false,pets:false,housemates:4,v:{id:true,own:true,photos:true},reply:10,boost:false,host:"Rajesh K.",daysSilent:1,desc:"Own bathroom, shared kitchen and garden. Bus 631 to campus in 10 minutes. Mostly engineering students.",hue:160},
+ {id:3,title:"Budget room in Footscray share house",suburb:"Footscray",uni:UNIS[7],price:210,type:"Private room",furnished:false,bills:true,pets:true,housemates:4,v:{id:false,own:true,photos:true},reply:22,boost:false,host:"Sam O.",daysSilent:2,desc:"Relaxed house with a friendly old kelpie. Unfurnished room, bills and internet included. Close to Footscray station.",hue:30},
+ {id:4,title:"City apartment room, walk to RMIT",suburb:"Melbourne CBD",uni:UNIS[1],price:390,type:"Private room",furnished:true,bills:true,pets:false,housemates:1,v:{id:true,own:true,photos:true},reply:2,boost:true,host:"Grace W.",daysSilent:0,desc:"Two-bedroom apartment on La Trobe St with gym and study lounge in the building. Living with one working professional.",hue:265},
+ {id:5,title:"Shared room for two, Hawthorn",suburb:"Hawthorn",uni:UNIS[6],price:180,type:"Shared room",furnished:true,bills:true,pets:false,housemates:5,v:{id:true,own:false,photos:true},reply:30,boost:false,host:"Daniel M.",daysSilent:1,desc:"Twin beds in a large room, 5 minutes from Swinburne. Ownership documents still under review.",hue:0},
+ {id:6,title:"Quiet room near Deakin Burwood",suburb:"Burwood",uni:UNIS[4],price:265,type:"Private room",furnished:true,bills:false,pets:false,housemates:2,v:{id:false,own:true,photos:true},reply:8,boost:false,host:"Mei L.",daysSilent:0,desc:"Family home with a self-contained upstairs area for students. Home-cooked dinners on Sundays if you like.",hue:95},
+ {id:7,title:"Room in Bundoora townhouse",suburb:"Bundoora",uni:UNIS[5],price:240,type:"Private room",furnished:false,bills:false,pets:true,housemates:3,v:{id:true,own:true,photos:false},reply:16,boost:false,host:"Priya S.",daysSilent:2,desc:"Walking distance to La Trobe. One photo failed our image check and has been replaced; review in progress.",hue:190},
+ {id:8,title:"Fitzroy room with balcony",suburb:"Fitzroy",uni:UNIS[8],price:345,type:"Private room + ensuite",furnished:true,bills:true,pets:false,housemates:2,v:{id:true,own:true,photos:true},reply:5,boost:false,host:"Tom H.",daysSilent:0,desc:"Converted warehouse, ensuite and small balcony. Housemates are a designer and an ACU nursing student.",hue:340}
+];
+const demoListings=listings;
+if(!LIVE)listings=store.get("myListings",[]).concat(listings);
+else if(!CONFIG.SHOW_DEMO_LISTINGS)listings=[];
+
+let applied=new Set(store.get("applied",[]).map(String));
+function appsState(){const s=store.get("apps",{date:today,count:0,unlimitedUntil:null});if(s.date!==today){s.date=today;s.count=0}return s}
+function isUnlimited(){const s=appsState();return s.unlimitedUntil && new Date(s.unlimitedUntil)>new Date()}
+function updateAppsLeft(){const el=document.getElementById("appsLeftTop");el.textContent=isUnlimited()?"Unlimited applications active":`${Math.max(0,3-appsState().count)} of 3 free applications left today`}
+
+// Room illustration (no remote images allowed)
+function roomSVG(h){return `<svg viewBox="0 0 320 200" role="img" aria-label="Illustration of the room"><rect width="320" height="200" fill="hsl(${h} 45% 88%)"/><rect y="150" width="320" height="50" fill="hsl(${h} 30% 70%)"/><rect x="190" y="30" width="90" height="80" fill="hsl(${h} 60% 96%)" stroke="hsl(${h} 25% 55%)" stroke-width="4"/><line x1="235" y1="30" x2="235" y2="110" stroke="hsl(${h} 25% 55%)" stroke-width="3"/><rect x="30" y="110" width="130" height="45" rx="6" fill="hsl(${h} 35% 55%)"/><rect x="30" y="95" width="40" height="22" rx="6" fill="#fff"/><rect x="30" y="90" width="8" height="65" fill="hsl(${h} 30% 40%)"/><rect x="200" y="125" width="60" height="30" fill="hsl(${(h+30)%360} 30% 50%)"/><circle cx="270" cy="118" r="10" fill="hsl(120 35% 45%)"/></svg>`}
+
+function stampHTML(v,reply){
+  const listed=v.own&&v.photos;
+  const cls=!listed?"partial":v.id?"":"basic";
+  const title=!listed?"⚠ Checks still in progress":v.id?"✓ ID-verified host":"Listing checked, host ID not verified";
+  const items=[
+    v.id?`<li>✓ Host ID confirmed</li>`:`<li class="muted">– Host ID not verified</li>`,
+    v.own?`<li>✓ Right to rent confirmed</li>`:`<li class="no">✕ Ownership pending</li>`,
+    v.photos?`<li>✓ Photos checked</li>`:`<li class="no">✕ Photo check pending</li>`,
+    reply!=null?`<li>✓ Replies in ~${reply}h</li>`:`<li>✓ 72-hour reply rule</li>`
+  ].join("");
+  return `<div class="stamp ${cls}"><div class="stamp-title">${title}</div><ul>${items}</ul></div>`
+}
+
+// Populate datalist & selects
+const places=[...new Set(listings.map(l=>l.suburb).concat(UNIS))];
+document.getElementById("places").innerHTML=places.map(p=>`<option value="${p}">`).join("");
+document.getElementById("r-uni").innerHTML+=UNIS.map(u=>`<option>${u}</option>`).join("");
+document.getElementById("h-uni").innerHTML=UNIS.map(u=>`<option>${u}</option>`).join("");
+
+function render(){
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  const max=+document.getElementById("maxPrice").value;
+  const type=document.getElementById("roomType").value;
+  const iv=document.getElementById("idVerified").checked;
+  const f=document.getElementById("furnished").checked;
+  const b=document.getElementById("billsIncl").checked;
+  const np=document.getElementById("noPets").checked;
+  let r=listings.filter(l=>(!q||(l.suburb+" "+l.uni+" "+l.title).toLowerCase().includes(q))&&l.price<=max&&(!type||l.type===type)&&(!iv||l.v.id)&&(!f||l.furnished)&&(!b||l.bills)&&(!np||!l.pets));
+  const s=document.getElementById("sort").value;
+  r.sort((a,c)=>s==="priceAsc"?a.price-c.price:s==="priceDesc"?c.price-a.price:s==="response"?(a.reply??72)-(c.reply??72):(c.boost-a.boost)||(c.v.id-a.v.id)||((a.reply??72)-(c.reply??72)));
+  document.getElementById("resultCount").textContent=`${r.length} room${r.length===1?"":"s"} available`;
+  const g=document.getElementById("grid");
+  if(!r.length){g.innerHTML=`<div class="empty"><h3>No rooms match these filters</h3><p style="margin:0 auto 12px">Try raising your max rent or searching a nearby suburb.</p><button class="btn btn-ghost" id="clearF">Clear filters</button></div>`;document.getElementById("clearF").onclick=()=>{document.getElementById("searchForm").reset();["idVerified","furnished","billsIncl","noPets"].forEach(i=>document.getElementById(i).checked=false);render()};return}
+  g.innerHTML=r.map(l=>{
+    const left=Math.max(0,3-l.daysSilent);
+    return `<article class="listing ${l.boost?"boosted":""}">
+      <div class="photo">${roomSVG(l.hue)}${l.boost?'<span class="boost-tag">Boosted</span>':""}</div>
+      <div class="listing-body">
+        <div class="price">$${l.price} <small>per week${l.bills?", bills incl.":""}</small></div>
+        <h3 style="margin:0">${esc(l.title)}</h3>
+        <p class="addr">${esc(l.suburb)} · near ${esc(l.uni)}</p>
+        <div class="meta"><span>${esc(l.type)}</span><span>${l.housemates} housemate${l.housemates===1?"":"s"}</span>${l.furnished?"<span>Furnished</span>":""}${l.pets?"<span>Pets in house</span>":""}</div>
+        ${stampHTML(l.v,l.reply)}
+        <div class="countdown">Host last replied ${l.daysSilent===0?"<strong>today</strong>":`<strong>${l.daysSilent} day${l.daysSilent>1?"s":""} ago</strong>`}. Listing auto-pauses in ${left} day${left===1?"":"s"} without a reply.</div>
+        <div class="listing-actions">
+          <button class="btn btn-ghost" data-view="${esc(l.id)}">View details</button>
+          <button class="btn btn-primary" data-apply="${esc(l.id)}" ${applied.has(String(l.id))?"disabled":""}>${applied.has(String(l.id))?"Applied":"Apply with RenterResume"}</button>
+        </div>
+      </div></article>`}).join("");
+}
+
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2800)}
+
+function apply(id){
+  const resume=store.get("resume",null);
+  if(!resume){document.getElementById("needResume").showModal();return}
+  const s=appsState();
+  if(!isUnlimited()&&s.count>=3){document.getElementById("paywall").showModal();return}
+  s.count++;store.set("apps",s);
+  applied.add(String(id));store.set("applied",[...applied]);
+  const l=listings.find(x=>String(x.id)===String(id));
+  toast(`Applied. ${esc(l.host)} has 72 hours to respond to your RenterResume.`);
+  updateAppsLeft();render();
+  const d=document.getElementById("detail");if(d.open)d.close();
+}
+
+function openDetail(id){
+  const l=listings.find(x=>String(x.id)===String(id));
+  document.getElementById("detailInner").innerHTML=`<button class="modal-close" aria-label="Close" data-close>×</button>
+    <div class="photo" style="border-radius:10px;overflow:hidden;margin-bottom:16px">${roomSVG(l.hue)}</div>
+    <div class="price">$${l.price} <small>per week</small></div>
+    <h2 style="font-size:1.5rem">${esc(l.title)}</h2>
+    <p class="addr">${esc(l.suburb)} · near ${esc(l.uni)} · hosted by ${esc(l.host)}</p>
+    <p>${esc(l.desc)}</p>
+    ${stampHTML(l.v,l.reply)}
+    <p class="countdown" style="margin-top:12px">Your full RenterResume is sent with your application. No message needed.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-primary" data-apply="${esc(l.id)}" ${applied.has(String(l.id))?"disabled":""}>${applied.has(String(l.id))?"Applied":"Apply with RenterResume"}</button>
+      <button class="btn btn-ghost" data-report="${esc(l.id)}" style="color:var(--flag)">Report listing</button>
+    </div>`;
+  document.getElementById("detail").showModal();
+}
+
+// Global click handling
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-go],[data-apply],[data-view],[data-close],[data-open],[data-report]");
+  if(!t)return;
+  if(t.dataset.close!==undefined){t.closest("dialog").close()}
+  if(t.dataset.go){e.preventDefault();go(t.dataset.go)}
+  if(t.dataset.apply)apply(t.dataset.apply);
+  if(t.dataset.view)openDetail(t.dataset.view);
+  if(t.dataset.open)document.getElementById(t.dataset.open).showModal();
+  if(t.dataset.report){document.getElementById("detail").close();toast("Listing reported. Our team reviews reports within 24 hours.")}
+});
+
+function go(v){
+  // Logged-out visitors are sent to the login page, then on to where they were heading
+  if(PROTECTED[v]&&!user){store.set("afterLogin",v);showLoginReason(v);v="login"}
+  else if(v==="login"&&!recovering){showLoginReason(store.get("afterLogin",null))}
+  document.querySelectorAll(".view").forEach(s=>s.classList.toggle("active",s.id==="view-"+v));
+  document.querySelectorAll(".nav nav button").forEach(b=>{if(b.dataset.go===v)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  window.scrollTo(0,0);
+}
+
+document.getElementById("buyUnlimited").onclick=()=>{
+  const s=appsState();const u=new Date();u.setDate(u.getDate()+7);s.unlimitedUntil=u.toISOString();store.set("apps",s);
+  document.getElementById("paywall").close();updateAppsLeft();toast("Unlimited applications unlocked for 7 days (simulated payment).");
+};
+
+["searchForm"].forEach(id=>document.getElementById(id).addEventListener("submit",e=>{e.preventDefault();render()}));
+["maxPrice","roomType","idVerified","furnished","billsIncl","noPets","sort"].forEach(id=>document.getElementById(id).addEventListener("change",render));
+document.getElementById("q").addEventListener("input",render);
+
+// ---------- RenterResume ----------
+function chips(el,list,name){document.getElementById(el).innerHTML=list.map(x=>`<label><input type="checkbox" name="${name}" value="${x}">${x}</label>`).join("")}
+chips("hobbyChips",HOBBIES,"hobby");chips("habitChips",HABITS,"habit");chips("concernChips",CONCERNS,"concern");
+const rf=document.getElementById("resumeForm");
+function readResume(){
+  const g=id=>document.getElementById(id).value.trim();
+  const checked=n=>[...rf.querySelectorAll(`input[name=${n}]:checked`)].map(i=>i.value);
+  return {name:g("r-name"),email:g("r-email"),country:g("r-country"),uni:g("r-uni"),course:g("r-course"),move:g("r-move"),langs:g("r-langs"),social:+g("r-social"),hobbies:checked("hobby"),habits:checked("habit"),concerns:checked("concern"),about:g("r-about"),idcheck:document.getElementById("r-idcheck").checked}
+}
+function preview(){
+  const r=readResume();
+  document.getElementById("socialLabel").textContent=SOCIAL[r.social-1];
+  document.getElementById("aboutCount").textContent=r.about.length;
+  document.getElementById("pv-name").textContent=(r.name||"Your name")+(r.idcheck?" ✓":"");
+  document.getElementById("pv-sub").textContent=[r.uni||"University",r.course||"Course"].join(" · ");
+  const row=(k,v)=>`<dt>${k}</dt><dd>${v}</dd>`;
+  document.getElementById("pv-body").innerHTML=
+    row("From",r.country||"—")+row("Languages",r.langs||"—")+row("Move-in",r.move||"—")+
+    `<dt>Sociability</dt><dd>${SOCIAL[r.social-1]}<div class="meter"><span style="width:${r.social*20}%"></span></div></dd>`+
+    row("Hobbies",r.hobbies.join(", ")||"—")+row("Habits",r.habits.join(", ")||"—")+
+    row("Would find hard to live with",r.concerns.length?r.concerns.map(c=>`<span class="concern">${c}</span>`).join(""):"Nothing listed")+
+    (r.about?row("About",r.about.replace(/</g,"&lt;")):"")+
+    row("Identity",r.idcheck?"Student ID and passport check requested":"Not verified yet");
+}
+function loadResume(){
+  const r=store.get("resume",null);if(!r)return;
+  const s=(id,v)=>{document.getElementById(id).value=v||""};
+  s("r-name",r.name);s("r-email",r.email);s("r-country",r.country);s("r-uni",r.uni);s("r-course",r.course);s("r-move",r.move);s("r-langs",r.langs);s("r-about",r.about);
+  document.getElementById("r-social").value=r.social||3;document.getElementById("r-idcheck").checked=!!r.idcheck;
+  ["hobby","habit","concern"].forEach(n=>rf.querySelectorAll(`input[name=${n}]`).forEach(i=>i.checked=(r[n+(n==="hobby"?"ies":"s")]||[]).includes(i.value)));
+}
+rf.addEventListener("input",preview);rf.addEventListener("change",preview);
+rf.addEventListener("submit",e=>{e.preventDefault();store.set("resume",readResume());toast("RenterResume saved. You can now apply to rooms with one tap.")});
+loadResume();preview();
+
+// ---------- Host flow ----------
+// Works in two modes:
+//  demo (no CONFIG): checks and payments are simulated in the browser
+//  live (CONFIG filled in): real sign-in, uploads to private storage,
+//        Stripe Checkout payments and automatic Stripe Identity checks
+const sb=LIVE&&window.supabase?window.supabase.createClient(CONFIG.SUPABASE_URL,CONFIG.SUPABASE_ANON_KEY):null;
+let user=null,profile=null,idPolling=false;
+const hv={id:false,own:false,photos:false};
+// Each new listing gets its ID up front, so its documents are stored in its own folder for review
+const newId=()=>crypto.randomUUID?crypto.randomUUID():"10000000-1000-4000-8000-100000000000".replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16));
+let draftListingId=newId();
+const boostBox=document.getElementById("h-boost");
+const stepsHTML=document.getElementById("verifySteps").innerHTML;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+
+async function fnCall(name,body){
+  const {data,error}=await sb.functions.invoke(name,{body});
+  if(error){let msg=error.message;try{const j=await error.context.json();msg=j.error||msg}catch(_){}throw new Error(msg)}
+  return data;
+}
+async function refreshProfile(){
+  if(!sb||!user){profile=null;return}
+  const {data}=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
+  profile=data;hv.id=!!profile?.id_verified;
+}
+async function pollProfile(done){
+  idPolling=true;updateHostUI();
+  for(let i=0;i<30;i++){await refreshProfile();if(done(profile))break;await wait(4000)}
+  idPolling=false;updateHostUI();
+}
+async function checkout(product,listingId){
+  try{toast("Opening secure Stripe checkout…");const {url}=await fnCall("create-checkout",{product,listing_id:listingId});location.href=url}
+  catch(e){toast(e.message);updateHostUI()}
+}
+async function startVerification(){
+  const b=document.getElementById("startIdBtn");if(b){b.disabled=true;b.textContent="Opening Stripe…"}
+  try{const {url}=await fnCall("start-verification",{});location.href=url}
+  catch(e){toast(e.message);updateHostUI()}
+}
+
+function renderAccount(){
+  const el=document.getElementById("accountPanel");
+  if(!LIVE||!user){el.hidden=true;return}
+  el.hidden=false;
+  el.innerHTML=`Hosting as <strong>${esc(user.email)}</strong> · ${profile?.id_verified?'<span class="status ok">ID verified by Stripe</span>':'<span class="status">ID not verified yet</span>'}`;
+}
+
+function renderIdStep(){
+  const box=document.getElementById("idAction");const li=box.closest("li");const boost=boostBox.checked;
+  li.classList.toggle("done",hv.id);
+  if(hv.id){box.innerHTML=`<span class="status ok">${LIVE?"ID confirmed by Stripe":"ID confirmed"}</span>`;return}
+  if(!LIVE){
+    box.innerHTML=`<label class="btn btn-primary">${boost?"Verify ID free":"Verify ID for $2.99"}<input type="file" hidden accept="image/*,.pdf"></label>`;
+    const inp=box.querySelector("input"),lbl=box.querySelector("label");
+    inp.onchange=()=>{if(!inp.files.length)return;lbl.firstChild.textContent="Checking…";setTimeout(()=>{hv.id=true;updateHostUI()},900)};
+    return;
+  }
+  if(!user){box.innerHTML=`<span class="status">Log in first</span>`;return}
+  if(idPolling){box.innerHTML=`<span class="status">Waiting for Stripe…</span>`;return}
+  const err=profile?.last_verification_error
+    ?`<p class="status bad" style="margin:6px 0 0">Last attempt didn't pass (${esc(profile.last_verification_error.replace(/_/g," "))}). Please try again.</p>`:"";
+  if(profile?.id_paid){
+    box.innerHTML=`<button type="button" class="btn btn-primary" id="startIdBtn">Start ID check</button>${err}`;
+    document.getElementById("startIdBtn").onclick=startVerification;return;
+  }
+  if(boost){box.innerHTML=`<span class="status">Free with Boost. Publish first, then start your check here.</span>`;return}
+  box.innerHTML=`<button type="button" class="btn btn-primary" id="payIdBtn">Pay $2.99 and verify</button>`;
+  document.getElementById("payIdBtn").onclick=()=>checkout("id");
+}
+
+function hostStamp(){
+  // In live mode, ownership and photos are only "confirmed" after our team approves them
+  const v=LIVE?{id:hv.id,own:false,photos:false}:hv;
+  document.getElementById("hostStampPreview").outerHTML=stampHTML(v,null).replace('<div class="stamp','<div id="hostStampPreview" class="stamp');
+}
+function costs(){const boost=boostBox.checked;return {boost,idFee:!LIVE&&hv.id&&!boost?2.99:0}}
+
+function updateHostUI(){
+  const boost=boostBox.checked;
+  renderAccount();renderIdStep();
+  document.getElementById("idBadge").textContent=
+    hv.id?"Done":LIVE&&profile?.id_paid?"Paid, ready to start":boost?"Optional, free with Boost":"Optional, $2.99";
+  const ok=hv.own&&hv.photos&&(!LIVE||!!user);
+  document.getElementById("publishBtn").disabled=!ok;
+  document.getElementById("publishHint").textContent=
+    LIVE&&!user?"Log in to list a room.":
+    !ok?"Upload your ownership proof and photos to publish.":
+    LIVE?(boost?"Ready. After publishing you'll pay for Boost, then your free ID check unlocks. We review your documents before the listing goes live."
+               :"Ready. We review your ownership documents and photos, usually within 24 hours, before the listing goes live."):
+    hv.id?"All checks passed. You're ready to publish.":
+    boost?"Ready to publish. Your Boost includes free ID verification, so verify your ID above to use it.":
+    "Ready to publish. ID verification is optional, but ID-verified listings rank higher and find tenants faster.";
+  const c=costs(),parts=[];
+  if(c.boost)parts.push("Boost $11.99/week (ID verification included)");
+  if(c.idFee)parts.push("ID verification $2.99 one-off");
+  document.getElementById("costSummary").textContent=parts.length?"You'll pay: "+parts.join(" + "):"You'll pay: nothing. Listing is free.";
+  hostStamp();
+}
+
+function bindSteps(){
+  document.querySelectorAll('#verifySteps li[data-step="own"], #verifySteps li[data-step="photos"]').forEach(li=>{
+    const inp=li.querySelector("input");const lbl=li.querySelector("label");
+    inp.addEventListener("change",async()=>{
+      if(!inp.files.length)return;
+      if(LIVE&&!user){toast("Log in first so we can attach these to your account.");inp.value="";return}
+      const step=li.dataset.step,n=inp.files.length;
+      lbl.firstChild.textContent=LIVE?"Uploading…":"Checking…";
+      try{
+        if(LIVE){
+          for(const f of inp.files){
+            const path=`${user.id}/${draftListingId}/${Date.now()}-${step}-${f.name.replace(/[^\w.\-]/g,"_")}`;
+            const {error}=await sb.storage.from("host-docs").upload(path,f);
+            if(error)throw error;
+          }
+        }else await wait(900);
+        hv[step]=true;li.classList.add("done");
+        const msg=LIVE?(step==="photos"?`${n} photo${n>1?"s":""} uploaded for review`:"Uploaded for review")
+                      :(step==="photos"?`${n} photo${n>1?"s":""} passed`:"Right to rent confirmed");
+        lbl.outerHTML=`<span class="status ok">${msg}</span>`;
+        updateHostUI();
+      }catch(err){lbl.firstChild.textContent="Try again";inp.value="";toast("Upload failed: "+err.message)}
+    });
+  });
+}
+function resetHostForm(form){
+  form.reset();hv.own=hv.photos=false;if(!LIVE)hv.id=false;draftListingId=newId();
+  document.getElementById("verifySteps").innerHTML=stepsHTML;bindSteps();updateHostUI();
+}
+boostBox.addEventListener("change",updateHostUI);
+
+document.getElementById("hostForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const g=id=>document.getElementById(id);const c=costs();
+  const fields={title:g("h-title").value.trim(),suburb:g("h-suburb").value.trim(),uni:g("h-uni").value,price:+g("h-price").value,
+    room_type:g("h-type").value,furnished:g("h-furn").checked,bills:g("h-bills").checked,pets:g("h-pets").checked,
+    housemates:2,description:g("h-desc").value.trim()||null};
+
+  if(LIVE){
+    const btn=g("publishBtn");btn.disabled=true;btn.textContent="Submitting…";
+    const {data,error}=await sb.from("listings").insert({id:draftListingId,...fields}).select("id").single();
+    btn.textContent="Publish listing";
+    if(error){toast("Couldn't save your listing: "+error.message);updateHostUI();return}
+    if(c.boost){await checkout("boost",data.id);return}
+    toast("Submitted. We review your documents and photos, usually within 24 hours, before your listing goes live.");
+    resetHostForm(e.target);return;
+  }
+
+  const l={id:Date.now(),title:fields.title,suburb:fields.suburb,uni:fields.uni,price:fields.price,type:fields.room_type,furnished:fields.furnished,bills:fields.bills,pets:fields.pets,housemates:2,v:{...hv},reply:1,boost:c.boost,host:"You",daysSilent:0,desc:fields.description||"No description yet.",hue:Math.floor(Math.random()*360)};
+  listings.unshift(l);const mine=store.get("myListings",[]);mine.unshift(l);store.set("myListings",mine);
+  toast(c.boost?"Listing published and boosted for $11.99/week, ID verification included (simulated payment).":
+        c.idFee?"Listing published with a verified ID. $2.99 charged (simulated payment).":
+        "Listing published for free. Verify your ID any time to rank higher in search.");
+  resetHostForm(e.target);
+  go("search");render();
+});
+
+// Real listings from the database (only approved, active ones are visible)
+function hashHue(id){let h=0;for(const ch of String(id))h=(h*31+ch.charCodeAt(0))%360;return h}
+async function loadLiveListings(){
+  const {data,error}=await sb.from("public_listings").select("*").order("created_at",{ascending:false}).limit(200);
+  if(error){console.warn(error);toast("Couldn't load listings right now.");return}
+  const live=data.map(r=>({id:r.id,title:r.title,suburb:r.suburb,uni:r.uni||"Melbourne",price:r.price,type:r.room_type,
+    furnished:r.furnished,bills:r.bills,pets:r.pets,housemates:r.housemates,
+    v:{id:r.host_id_verified,own:true,photos:true},reply:null,boost:r.boosted,
+    host:r.host_id_verified?"an ID-verified host":"the host",
+    daysSilent:Math.floor((Date.now()-new Date(r.last_host_reply_at))/864e5),
+    desc:r.description||"",hue:hashHue(r.id)}));
+  listings=live.concat(CONFIG.SHOW_DEMO_LISTINGS?demoListings:[]);
+  render();
+}
+
+// ---------- Accounts: log in, create account, password reset ----------
+// Live mode uses Supabase Auth (real accounts, confirmation and reset emails).
+// Demo mode keeps a pretend account in this browser so the flow can be tried.
+const PROTECTED={resume:"use My RenterResume",host:"list a room"};
+let authMode="login",recovering=false;
+const siteBase=location.origin+location.pathname;
+if(!LIVE){const du=store.get("demoUser",null);if(du)user={id:"demo",email:du.email}}
+
+function friendlyAuthError(err){
+  const m=(err&&err.message)||String(err);
+  if(/invalid login credentials/i.test(m))return "That email and password don't match. Check them, or create an account.";
+  if(/email not confirmed/i.test(m))return "Please confirm your email first. Check your inbox for the link we sent.";
+  if(/already registered|already exists/i.test(m))return "An account with this email already exists. Log in instead.";
+  if(/rate limit|too many/i.test(m))return "Too many attempts. Please wait a few minutes and try again.";
+  if(/password/i.test(m))return m;
+  return "Something went wrong: "+m;
+}
+function authMsg(text,ok){const el=document.getElementById("authMsg");el.textContent=text||"";el.className="auth-msg"+(text?(ok?" ok":" bad"):"")}
+
+function setAuthMode(mode){
+  authMode=mode;const signup=mode==="signup";
+  document.getElementById("tabLogin").setAttribute("aria-selected",String(!signup));
+  document.getElementById("tabSignup").setAttribute("aria-selected",String(signup));
+  document.getElementById("loginTitle").textContent=signup?"Create your account":"Log in";
+  document.getElementById("confirmField").hidden=!signup;
+  document.getElementById("authConfirm").required=signup;
+  document.getElementById("pwHint").hidden=!signup;
+  document.getElementById("authPassword").autocomplete=signup?"new-password":"current-password";
+  document.getElementById("authSubmit").textContent=signup?"Create account":"Log in";
+  document.getElementById("forgotBtn").hidden=signup;
+  authMsg("");
+}
+function showLoginReason(target){
+  const el=document.getElementById("loginReason");
+  el.textContent=PROTECTED[target]?`Log in or create a free account to ${PROTECTED[target]}.`:"Log in or create a free account. It's the same account for renting and hosting.";
+}
+function renderAuthSlot(){
+  const slot=document.getElementById("authSlot");
+  if(user){
+    slot.innerHTML=`<span class="who" title="${esc(user.email)}">${esc(user.email)}</span><button class="btn btn-ghost btn-sm" type="button" id="logoutBtn">Log out</button>`;
+    document.getElementById("logoutBtn").onclick=logOut;
+  }else{
+    slot.innerHTML=`<button class="btn btn-primary btn-sm" type="button" data-go="login">Log in</button>`;
+  }
+}
+
+async function logOut(){
+  if(sb)await sb.auth.signOut();
+  else{store.set("demoUser",null);user=null;afterAuthChange()}
+  toast("You're logged out.");
+}
+
+// Runs whenever someone logs in or out
+function afterAuthChange(){
+  renderAuthSlot();
+  const current=document.querySelector(".view.active")?.id.replace("view-","");
+  if(user){
+    const r=document.getElementById("r-email");if(r&&!r.value)r.value=user.email;
+    if(current==="login"&&!recovering){const next=store.get("afterLogin",null)||"search";store.set("afterLogin",null);go(next)}
+  }else if(PROTECTED[current]){go(current)} // bounces to the login page
+  updateHostUI();
+}
+
+document.getElementById("tabLogin").onclick=()=>setAuthMode("login");
+document.getElementById("tabSignup").onclick=()=>setAuthMode("signup");
+
+document.getElementById("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const email=document.getElementById("authEmail").value.trim();
+  const password=document.getElementById("authPassword").value;
+  const btn=document.getElementById("authSubmit");
+  if(authMode==="signup"){
+    if(password.length<8){authMsg("Use at least 8 characters for your password.");return}
+    if(password!==document.getElementById("authConfirm").value){authMsg("The two passwords don't match.");return}
+  }
+  btn.disabled=true;const label=btn.textContent;btn.textContent=authMode==="signup"?"Creating account…":"Logging in…";authMsg("");
+  try{
+    if(!sb){ // demo mode
+      if(!LIVE){store.set("demoUser",{email});user={id:"demo",email};toast(authMode==="signup"?"Account created (demo).":"Logged in (demo).");afterAuthChange()}
+      else throw new Error("the sign-in service didn't load. Refresh and try again.");
+    }else if(authMode==="signup"){
+      const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:siteBase+"?view=login"}});
+      if(error)throw error;
+      if(data.session)toast("Account created. Welcome to DunphyRooms!");
+      else{setAuthMode("login");authMsg(`Almost done. We've sent a link to ${email}. Click it to confirm your account.`,true)}
+    }else{
+      const {error}=await sb.auth.signInWithPassword({email,password});
+      if(error)throw error;
+    }
+    document.getElementById("authPassword").value="";document.getElementById("authConfirm").value="";
+  }catch(err){authMsg(friendlyAuthError(err))}
+  btn.disabled=false;btn.textContent=label;
+});
+
+document.getElementById("forgotBtn").onclick=async()=>{
+  const email=document.getElementById("authEmail").value.trim();
+  if(!email){authMsg("Type your email above first, then press Forgot your password.");document.getElementById("authEmail").focus();return}
+  if(!sb){authMsg("Demo mode doesn't send emails. Just log in with any password.",true);return}
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:siteBase+"?view=login"});
+  authMsg(error?friendlyAuthError(error):`If ${email} has an account, we've emailed a link to reset the password.`,!error);
+};
+
+document.getElementById("resetForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const pw=document.getElementById("newPassword").value,pw2=document.getElementById("newPassword2").value;
+  const msg=document.getElementById("resetMsg");
+  if(pw.length<8){msg.textContent="Use at least 8 characters.";return}
+  if(pw!==pw2){msg.textContent="The two passwords don't match.";return}
+  const {error}=await sb.auth.updateUser({password:pw});
+  if(error){msg.textContent=friendlyAuthError(error);return}
+  recovering=false;document.getElementById("resetForm").hidden=true;document.getElementById("authForm").hidden=false;
+  document.querySelector(".login-tabs").hidden=false;
+  toast("Password updated. You're logged in.");afterAuthChange();
+});
+function showPasswordReset(){
+  recovering=true;go("login");
+  document.getElementById("loginTitle").textContent="Choose a new password";
+  document.getElementById("loginReason").textContent="";
+  document.querySelector(".login-tabs").hidden=true;
+  document.getElementById("authForm").hidden=true;document.getElementById("resetForm").hidden=false;
+}
+
+async function initLive(){
+  if(!LIVE||!sb){openStartView();updateHostUI();return}
+  const {data:{session}}=await sb.auth.getSession();
+  user=session?.user||null;await refreshProfile();
+  sb.auth.onAuthStateChange((ev,s)=>{setTimeout(async()=>{
+    user=s?.user||null;await refreshProfile();
+    if(ev==="PASSWORD_RECOVERY")showPasswordReset();
+    afterAuthChange();
+  },0)});
+  openStartView();
+
+  const q=params; // read before the address bar was tidied
+  if(q.get("checkout")==="success"){
+    toast(q.get("product")==="boost"?"Boost active. Your listing is in review, and your free ID check is unlocked.":"Payment received. Press Start ID check to continue.");
+    pollProfile(p=>p&&(p.id_paid||p.id_verified));
+  }else if(q.get("checkout")==="cancelled"){
+    toast("Checkout cancelled. You haven't been charged.");
+  }
+  if(q.get("verification")==="returned"){
+    toast("Stripe is checking your ID. This usually takes under a minute.");
+    pollProfile(p=>p&&(p.id_verified||p.last_verification_error));
+  }
+  updateHostUI();loadLiveListings();
+}
+
+// Open the right page after returning from an email link or Stripe.
+// Waits until we know whether the visitor is logged in.
+const params=new URLSearchParams(location.search);
+function openStartView(){
+  renderAuthSlot();
+  const v=params.get("view");
+  if(v&&document.getElementById("view-"+v)){
+    if(v==="login"&&user&&!recovering){const next=store.get("afterLogin",null);store.set("afterLogin",null);go(next||"search")}
+    else go(v);
+  }
+  const r=document.getElementById("r-email");if(user&&r&&!r.value)r.value=user.email;
+}
+if(["view","checkout","product","verification"].some(k=>params.has(k)))history.replaceState(null,"",location.pathname+location.hash);
+document.getElementById("demoNote").hidden=LIVE;
+setAuthMode("login");
+bindSteps();updateHostUI();
+initLive();
+
+updateAppsLeft();render();
+})();
+</script>
+</body>
+</html>
